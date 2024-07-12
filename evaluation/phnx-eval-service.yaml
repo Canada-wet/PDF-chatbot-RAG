@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: phnx-eval
+  name: phnx-eval-service
+spec:
+  type: NodePort
+  ports:
+    - protocol: TCP
+      port: 6006           # This is the port the service will be accessed on within the cluster.
+      targetPort: 6006   # This should match the port your app is listening on.
+      nodePort: 30000  # Optional: only if you want to access from outside Minikube
+  selector:
+    app: phnx-eval  # Selects the deployment based on labels

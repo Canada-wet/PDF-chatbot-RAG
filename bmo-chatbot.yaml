@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: bmo-chatbot
+  name: bmo-chatbot
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: bmo-chatbot
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: bmo-chatbot
+    spec:
+      containers:
+      - image: bmo-chatbot
+        imagePullPolicy: Never  # this is addition
+        name: bmo-chatbot-fkfz2
+        ports:
+        - containerPort: 8501  # Specifies the port on which the container will listen
+        resources: {}
+status: {}

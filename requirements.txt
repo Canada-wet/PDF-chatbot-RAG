@@ -1,0 +1,21 @@
+# for chatbot deployment
+langchain_openai
+langchain_community
+langchain
+streamlit
+langchain_core
+pypdf
+python-dotenv
+faiss-cpu
+sentence-transformers
+rank_bm25
+openpyxl
+streamlit_feedback
+
+
+# for evaluation
+arize-phoenix[evals]
+uvicorn
+fastapi
+ragas
+datasets

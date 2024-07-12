@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: bmo-chatbot
+  name: bmo-chatbot-service
+spec:
+  # type: LoadBalancer  # Exposes the service externally using a cloud provider's load balancer
+  ports:
+  - port: 8501  # Port accessible from outside
+    targetPort: 8501  # Container port to send traffic to
+  selector:
+    app: bmo-chatbot  # Selects the deployment based on labels

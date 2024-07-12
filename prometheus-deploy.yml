@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: chatbot-prometheus
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: chatbot-prometheus
+  template:
+    metadata:
+      labels:
+        app: chatbot-prometheus
+    spec:
+      containers:
+        - name: prometheus
+          image: prom/prometheus:v2.33.1
+          args:
+            - "--config.file=/etc/prometheus/prometheus.yml"
+            - "--storage.tsdb.path=/prometheus/"
+          ports:
+            - containerPort: 9090
+          volumeMounts:
+            - name: config-volume
+              mountPath: /etc/prometheus
+            - name: prometheus-chatbot-storage
+              mountPath: /prometheus
+      volumes:
+        - name: config-volume
+          configMap:
+            name: chatbot-prometheus-config
+        - name: prometheus-chatbot-storage
+          emptyDir: {}

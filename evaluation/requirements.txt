@@ -1,0 +1,6 @@
+# for evaluation
+arize-phoenix[evals]
+uvicorn
+fastapi
+# ragas
+# datasets

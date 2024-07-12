@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: phnx-eval
+  name: phnx-eval
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: phnx-eval
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: phnx-eval
+    spec:
+      containers:
+      - image: phnx-eval
+        name: phnx-eval-tddp4
+        imagePullPolicy: Never  # this is addition
+        ports:
+        - containerPort: 6006  # Specifies the port on which the container will listen
+        resources: {}
+status: {}

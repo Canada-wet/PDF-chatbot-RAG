@@ -1,0 +1,14 @@
+global:
+  scrape_interval: 15s  # By default, scrape targets every 15 seconds.
+
+scrape_configs:
+  - job_name: 'bmo-chatbot'
+    kubernetes_sd_configs:
+      - role: endpoints
+    relabel_configs:
+      - source_labels: [__meta_kubernetes_service_name]
+        regex: 'bmo-chatbot-service'
+        action: keep
+      - source_labels: [__meta_kubernetes_endpoint_port_name]
+        regex: '8501'  # Adjust if your service uses a different port name
+        action: keep
